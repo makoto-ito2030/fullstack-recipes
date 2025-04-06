@@ -8,13 +8,13 @@
 
 以下のツールがローカルにインストールされている必要があります：
 
-| ツール          | バージョン例        | 備考                                   |
-|------------------|---------------------|----------------------------------------|
-| Docker            | 24.x 以降           | PostgreSQLをコンテナで起動するため     |
-| Ruby              | 3.2.x               | rbenvやrvmでの管理を推奨               |
-| Node.js           | 18.x or 20.x        | React（Vite）用                        |
-| npm または Yarn   | npm 8.x〜（推奨）    | React依存のインストール用              |
-| Git               | 任意                | GitHubからcloneする場合に使用          |
+| ツール             | バージョン例        | 備考                                   |
+|--------------------|---------------------|----------------------------------------|
+| Docker             | 24.x 以降           | PostgreSQLをコンテナで起動するため     |
+| Ruby               | 3.2.x               | rbenvやrvmでの管理を推奨               |
+| Node.js            | 18.x or 20.x        | React（Vite）用                        |
+| npm または Yarn    | npm 8.x〜（推奨）    | React依存のインストール用              |
+| Git                | 任意                | GitHubからcloneする場合に使用          |
 
 > 💡 Rubyは [`rbenv`](https://github.com/rbenv/rbenv)、Node.jsは [`volta`](https://volta.sh) でのバージョン管理がおすすめです。
 
@@ -23,10 +23,11 @@
 ## 🧩 構成内容
 
 - **Rails API**（`backend/`）  
-  `bundle exec rails s` で起動。APIサーバーとしてJSONを返します。
+  `bundle exec rails s` で起動。APIサーバーとしてJSONを返します。  
+  → [http://localhost:3000/api/hello](http://localhost:3000/api/hello)
 
 - **React (Vite)**（`frontend/`）  
-  `npm run dev` で開発用サーバー（http://localhost:5173）を起動。
+  `npm run dev` で開発用サーバー（[http://localhost:5173](http://localhost:5173)）を起動。
 
 - **PostgreSQL**（`docker-compose.yml`）  
   Dockerで起動するDBサーバー。Railsと接続されています。
@@ -44,3 +45,12 @@ cd backend
 bundle install
 bundle exec rails db:create db:migrate
 bundle exec rails s
+
+# 任意：データ投入
+bundle exec rails c
+Message.create!(content: "これはサンプルメッセージです。")
+
+# ③ React (Vite) をセットアップ（別ターミナルで）
+cd frontend
+npm install
+npm run dev
