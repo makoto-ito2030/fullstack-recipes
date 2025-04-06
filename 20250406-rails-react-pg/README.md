@@ -44,11 +44,8 @@ docker compose up -d
 cd backend
 bundle install
 bundle exec rails db:create db:migrate
+bundle exec rails runner 'Message.create!(content: "これはサンプルメッセージです。")'
 bundle exec rails s
-
-# 任意：データ投入
-bundle exec rails c
-Message.create!(content: "これはサンプルメッセージです。")
 
 # ③ React (Vite) をセットアップ（別ターミナルで）
 cd frontend
