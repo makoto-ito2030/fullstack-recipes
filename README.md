@@ -7,6 +7,7 @@
 | 日付       | スタック構成            | ディレクトリ名                     |
 |------------|--------------------------|------------------------------------|
 | 2025-04-06 | Rails + React + PostgreSQL | [20250406-rails-react-pg](./20250406-rails-react-pg) |
+| 2025-04-15 | Rails + Ridgepole + PostgreSQL | [20250415-rails-ridgepole-pg](./20250415-rails-ridgepole-pg) |
 
 ---
 
