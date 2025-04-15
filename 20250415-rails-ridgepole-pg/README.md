@@ -57,7 +57,7 @@ create_table "users", force: :cascade do |t|
 end
 ```
 
-適用は通常の `db:migrate` でOK（Rakeタスクで Ridgepole をフック済）：
+適用は通常の `db:migrate` でOK（カスタム Rake タスクで Ridgepole をフック済）：
 
 ```bash
 bin/rails db:migrate
@@ -73,13 +73,38 @@ bundle exec ridgepole -c config/database.yml --diff -f db/Schemafile
 
 ## 📝 Annotate（モデルにスキーマ情報コメント）
 
-スキーマを変更後、以下でモデルファイルの先頭に自動でコメントが付与されます：
+スキーマ変更後、モデルファイルの先頭にスキーマコメントを付けたい場合：
 
 ```bash
 bundle exec annotate
 ```
 
-もしくは `bin/rails db:migrate` 実行時に自動実行されます。
+または、以下のカスタム Rake タスクにより `bin/rails db:migrate` 実行時に自動実行されます。
+
+```ruby
+namespace :db do
+  desc "Apply schema using Ridgepole and annotate models"
+  task :migrate do
+    config = Rails.configuration.database_configuration[Rails.env]
+    cmd = [
+      "bundle exec ridgepole",
+      "-c config/database.yml",
+      "--env \#{Rails.env}",
+      "--apply",
+      "-f db/Schemafile"
+    ].join(" ")
+
+    puts "Running Ridgepole..."
+    system(cmd)
+
+    puts "Running Annotate..."
+    system("bundle exec annotate")
+  end
+end
+```
+
+❗️**注意**：モデルファイル名とクラス名が一致していないと annotate はエラーになります。  
+例：`app/models/test_user.rb` には `class TestUser < ApplicationRecord` が必要です。
 
 ---
 
