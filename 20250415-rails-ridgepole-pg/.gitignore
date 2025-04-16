@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+/vendor/bundle/
 
 # Ignore all environment files (except templates).
 /.env*
@@ -33,3 +34,16 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# macOS
+.DS_Store
+
+# Vim swap files
+*.swp
+*.swo
+
+# Node modules (if using frontend stuff)
+node_modules/
+
+# SimpleCov coverage output
+/coverage/
