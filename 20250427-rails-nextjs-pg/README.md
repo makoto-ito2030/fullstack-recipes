@@ -89,4 +89,4 @@ yarn dev -p 8000
 
 - Rails APIとNext.jsを連携させる際、CORS設定が必要です。
 - `rack-cors` gemを導入し、`config/initializers/cors.rb` で `localhost:8000` からのリクエストを許可しています。
-- 開発時には、Rails（http://localhost:3000）とNext.js（http://localhost:8000）がポート違いのため、CORSエラー防止が必須です。
+- 開発時には、Rails（[http://localhost:3000](http://localhost:3000)）とNext.js（[http://localhost:8000](http://localhost:8000)）がポート違いのため、CORSエラー防止が必須です。
