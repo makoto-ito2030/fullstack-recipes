@@ -1,0 +1,22 @@
+# DB
+/db/
+
+# Rails標準無視リスト
+/log/*
+/tmp/*
+/vendor/bundle
+/.bundle
+/storage/*
+/node_modules/
+/public/packs
+/public/assets
+
+# dotenv
+.env
+.env.*
+
+# Macゴミ
+.DS_Store
+
+# その他
+.byebug_history
